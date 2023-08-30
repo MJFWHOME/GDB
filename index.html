@@ -1,0 +1,264 @@
+<html><head>
+        <title>GDB -- The GameDashboard v0.1</title>
+    </head>
+    <body>
+      <!--
+            Maybe for later? idk
+                  <div class="intro" id="intro">
+                    <img src="data:image/png;base64,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"></img>
+                    <p style="text-align: left; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; font-size: large;">The Best Games</p>
+                  </div>
+            CODE SAMPLES:
+            <a href="" class="card">
+                    <img src="">
+                    <figcaption>Test</figcaption>
+            </a>
+            ps: put this in cards div
+
+      -->
+      <h1 style="text-align: left; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; font-size: xxx-large;">GDB -- v0.1</h1>
+      <a href="https://github.com/MJFWHOME/GDB/releases">Releases</a>
+      <h2><strong>Featured Games!<span></span></strong></h2>
+        <div class="cards">
+            <a href="" class="card">
+                <img src="">
+                <figcaption>Test</figcaption>
+            </a>
+            <a href="" class="card">
+                <img src="">
+                <figcaption>Test</figcaption>
+            </a>
+            <a href="" class="card">
+                <img src="">
+                <figcaption>Test</figcaption>
+            </a>
+            <a href="" class="card">
+                <img src="">
+                <figcaption>Test</figcaption>
+            </a>
+            <a href="" class="card">
+                <img src="">
+                <figcaption>Test</figcaption>
+            </a>
+        </div>
+        <h2><strong>All Games<span></span></strong></h2>
+<style>
+
+.card
+{
+  border-radius: 25px;
+  padding: 20px;
+  position: absolute;
+}
+
+.abs,
+h2:after,
+.cards .card figcaption,
+.cards .card:after,
+.news .card figcaption,
+.news .card:after,
+.news .article figcaption {
+  position: absolute;
+}
+.rel,
+h2,
+h2 strong,
+.cards .card,
+.news .card,
+.news .article {
+  position: relative;
+}
+.fix {
+  position: fixed;
+}
+.dfix {
+  display: inline;
+}
+.dib {
+  display: inline-block;
+}
+.db {
+  display: block;
+}
+.dn {
+  display: none;
+}
+.df,
+.cards,
+.news {
+  display: flex;
+}
+.dif {
+  display: inline-flex;
+}
+.dg {
+  display: grid;
+}
+.dig {
+  display: inline-grid;
+}
+.vm,
+h2,
+h2 strong,
+h2 span {
+  vertical-align: middle;
+}
+body {
+  font-family: 'Alegreya Sans';
+  background-color: #24282fff;
+}
+.wrapper {
+  padding: 15px;
+}
+h2 {
+  padding: 10px;
+  padding-left: 25px;
+  color: #ccc;
+  margin: 0;
+}
+h2 strong {
+  z-index: 2;
+  background: #24282f;
+  padding: 4px 8px;
+}
+h2 span {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-left: 10px;
+}
+h2:after {
+  content: '';
+  z-index: 1;
+  bottom: 50%;
+  margin-bottom: -2px;
+  height: 2px;
+  left: 0;
+  right: 0;
+  background: #373d47;
+}
+.cards,
+.news {
+  flex-flow: row wrap;
+}
+.cards .card,
+.news .card {
+  margin: 20px;
+  width: 190px;
+  height: 75px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: 0.3s;
+}
+.cards .card img,
+.news .card img {
+  width: 100%;
+  min-height: 100%;
+}
+.cards .card figcaption,
+.news .card figcaption {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  background: none;
+  color: #fff;
+  transform: translateY(100%);
+  transition: 0.3s;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards .card:after,
+.news .card:after {
+  content: '';
+  z-index: 10;
+  width: 200%;
+  height: 100%;
+  top: -90%;
+  left: -20px;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  background: linear-gradient(to top, transparent, #fff 15%, rgba(255,255,255,0.5));
+  transition: 0.3s;
+}
+.cards .card:hover,
+.news .card:hover,
+.cards .card:focus,
+.news .card:focus,
+.cards .card:active,
+.news .card:active {
+  box-shadow: 0 8px 16px 3px rgba(0,0,0,0.6);
+  transform: translateY(-3px) scale(1.05) rotateX(15deg);
+}
+.cards .card:hover figcaption,
+.news .card:hover figcaption,
+.cards .card:focus figcaption,
+.news .card:focus figcaption,
+.cards .card:active figcaption,
+.news .card:active figcaption {
+  transform: none;
+}
+.cards .card:hover:after,
+.news .card:hover:after,
+.cards .card:focus:after,
+.news .card:focus:after,
+.cards .card:active:after,
+.news .card:active:after {
+  transform: rotate(25deg);
+  top: -40%;
+  opacity: 0.15;
+}
+.news .article {
+  overflow: hidden;
+  width: 350px;
+  height: 235px;
+  margin: 20px;
+}
+.news .article img {
+  width: 100%;
+  min-height: 100%;
+  transition: 0.2s;
+}
+.news .article figcaption {
+  font-size: 14px;
+  text-shadow: 0 1px 0 rgba(51,51,51,0.3);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 40px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+  background: rgba(6,18,53,0.6);
+  opacity: 0;
+  transform: scale(1.15);
+  transition: 0.2s;
+}
+.news .article figcaption h3 {
+  color: #3792e3;
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.news .article:hover img,
+.news .article:focus img,
+.news .article:active img {
+  filter: blur(3px);
+  transform: scale(0.97);
+}
+.news .article:hover figcaption,
+.news .article:focus figcaption,
+.news .article:active figcaption {
+  opacity: 1;
+  transform: none;
+}
+</style>
+
+</body></html>
