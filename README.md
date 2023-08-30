@@ -1,2 +1,2 @@
-# Nightly-Upload! 
-**THIS IS NOT A STABLE BRANCH THIS IS FOR ME TO SAVE WORK!**
+# v0.1
+1st release yay!
